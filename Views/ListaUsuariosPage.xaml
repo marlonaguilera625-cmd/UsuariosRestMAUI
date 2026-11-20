@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:UsuariosRestMAUI.ViewModels"
+             xmlns:model="clr-namespace:UsuariosRestMAUI.Models"
+             x:Class="UsuariosRestMAUI.Views.ListaUsuariosPage"
+             x:DataType="vm:ListaUsuariosViewModel"
+             Title="Directorio REST" BackgroundColor="{StaticResource FondoDirectorio}">
+
+    <Grid RowDefinitions="Auto,Auto,*" RowSpacing="12" Padding="20,18"
+          MaximumWidthRequest="800" HorizontalOptions="Fill">
+        <VerticalStackLayout Spacing="10">
+            <Label Style="{StaticResource TituloDirectorio}" Text="Directorio de usuarios" />
+            <FlexLayout Wrap="Wrap" JustifyContent="Center">
+                <Button Text="Nuevo usuario" Command="{Binding CrearCommand}" Margin="4" />
+                <Button Text="Actualizar" Command="{Binding ActualizarCommand}"
+                        IsEnabled="{Binding PuedeInteractuar}" Style="{StaticResource BotonSecundario}" Margin="4" />
+            </FlexLayout>
+            <Label Style="{StaticResource ErrorDirectorio}" Text="{Binding Error}" IsVisible="{Binding HayError}"
+                   SemanticProperties.Description="{Binding Error}" />
+        </VerticalStackLayout>
+        <Grid Grid.Row="1"><ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               Color="{StaticResource AcentoDirectorio}" HorizontalOptions="Center"
+                               SemanticProperties.Description="Solicitud en curso" /></Grid>
+        <RefreshView Grid.Row="2" Command="{Binding ActualizarCommand}" IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}">
+            <CollectionView ItemsSource="{Binding Usuarios}" SelectionMode="Single"
+                            SelectionChanged="AlSeleccionarUsuario">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Usuario">
+                        <Border Style="{StaticResource TarjetaDirectorio}">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Style="{StaticResource NombreDirectorio}" Text="{Binding Name}" />
+                                <Label Style="{StaticResource DatoDirectorio}" Text="{Binding Email, StringFormat='Correo · {0}'}" />
+<Label Style="{StaticResource DatoDirectorio}" Text="{Binding Phone, StringFormat='Teléfono · {0}'}" />
+<Label Style="{StaticResource DatoDirectorio}" Text="{Binding Website, StringFormat='Sitio web · {0}'}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

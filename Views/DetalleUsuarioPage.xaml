@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:UsuariosRestMAUI.ViewModels"
+             xmlns:model="clr-namespace:UsuariosRestMAUI.Models"
+             x:Class="UsuariosRestMAUI.Views.DetalleUsuarioPage"
+             x:DataType="vm:DetalleUsuarioViewModel"
+             Title="Detalle del usuario" BackgroundColor="{StaticResource FondoDirectorio}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="14" MaximumWidthRequest="640" HorizontalOptions="Fill">
+            <Label Style="{StaticResource TituloDirectorio}" Text="Detalle del usuario" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               Color="{StaticResource AcentoDirectorio}" HorizontalOptions="Center"
+                               SemanticProperties.Description="Solicitud en curso" />
+            <Label Style="{StaticResource ErrorDirectorio}" Text="{Binding Error}" IsVisible="{Binding HayError}"
+                   SemanticProperties.Description="{Binding Error}" />
+            <Button Text="Reintentar" Command="{Binding ReintentarCommand}" IsVisible="{Binding HayError}"
+                    IsEnabled="{Binding PuedeInteractuar}" HorizontalOptions="Center" />
+            <Border Style="{StaticResource TarjetaDirectorio}">
+                <Border.Triggers>
+                    <DataTrigger TargetType="Border" Binding="{Binding Usuario}" Value="{x:Null}">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Border.Triggers>
+                <VerticalStackLayout Spacing="9">
+                    <Label Style="{StaticResource NombreDirectorio}" Text="{Binding Usuario.Name}" />
+                    <Label Style="{StaticResource DatoDirectorio}" Text="{Binding Usuario.Id, StringFormat='ID · {0}'}" />
+                    <Label Style="{StaticResource DatoDirectorio}" Text="{Binding Usuario.Email, StringFormat='Correo · {0}'}" />
+<Label Style="{StaticResource DatoDirectorio}" Text="{Binding Usuario.Phone, StringFormat='Teléfono · {0}'}" />
+<Label Style="{StaticResource DatoDirectorio}" Text="{Binding Usuario.Website, StringFormat='Sitio web · {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Color x:Key="FondoDirectorio">#EDF5F4</Color>
+    <Color x:Key="AcentoDirectorio">#08675E</Color>
+    <Color x:Key="TextoDirectorio">#143539</Color>
+    <Style x:Key="TituloDirectorio" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextoDirectorio}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="SemanticProperties.HeadingLevel" Value="Level1" />
+    </Style>
+    <Style x:Key="TarjetaDirectorio" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Stroke" Value="#CCDCD9" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+        <Setter Property="Padding" Value="16" />
+    </Style>
+    <Style x:Key="DatoDirectorio" TargetType="Label">
+        <Setter Property="TextColor" Value="#375257" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineBreakMode" Value="CharacterWrap" />
+    </Style>
+    <Style x:Key="NombreDirectorio" TargetType="Label" BasedOn="{StaticResource DatoDirectorio}">
+        <Setter Property="TextColor" Value="{StaticResource TextoDirectorio}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="19" />
+    </Style>
+    <Style x:Key="ErrorDirectorio" TargetType="Label" BasedOn="{StaticResource DatoDirectorio}">
+        <Setter Property="BackgroundColor" Value="#FCE9E6" />
+        <Setter Property="TextColor" Value="#8C3028" />
+        <Setter Property="Padding" Value="12" />
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource AcentoDirectorio}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="MinimumHeightRequest" Value="46" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+    </Style>
+    <Style x:Key="BotonSecundario" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#D7EBE7" />
+        <Setter Property="TextColor" Value="{StaticResource TextoDirectorio}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="MinimumHeightRequest" Value="46" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+    </Style>
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="#EDF5F4" />
+        <Setter Property="TextColor" Value="{StaticResource TextoDirectorio}" />
+        <Setter Property="PlaceholderColor" Value="#50676A" />
+        <Setter Property="MinimumHeightRequest" Value="46" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+</ResourceDictionary>
